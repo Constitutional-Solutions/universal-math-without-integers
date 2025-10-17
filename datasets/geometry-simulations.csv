@@ -1,0 +1,13 @@
+simulation_id,timestamp,geometric_form,initial_state,flow_pattern,transformation_steps,final_state,area_conservation,symmetry_preserved,pattern_integrity,notes
+GS001,2025-10-17T10:00:00Z,circle_to_square,"radius=5,center=(0,0)",morphing_transformation,"1:circle,2:rounded_square,3:square","side=8.86,area=78.54",true,rotational,high,"Smooth area-preserving transformation"
+GS002,2025-10-17T10:05:00Z,spiral_growth,"initial_radius=1,turns=0",logarithmic_expansion,"1:r=1,2:r=1.618,3:r=2.618,4:r=4.236","radius=6.854,turns=2.5",true,self_similar,high,"Golden ratio spiral growth pattern"
+GS003,2025-10-17T10:10:00Z,triangle_fractal,"side=10,level=0",recursive_subdivision,"1:triangle,2:3_triangles,3:9_triangles,4:27_triangles","level=3,total_triangles=27",true,self_similar,high,"Sierpinski triangle iteration"
+GS004,2025-10-17T10:15:00Z,wave_interference,"amplitude=2,wavelength=4",standing_wave,"1:wave1+wave2,2:nodes_form,3:standing_pattern","nodes=3,antinodes=2",true,periodic,high,"Constructive/destructive interference"
+GS005,2025-10-17T10:20:00Z,pentagon_rotation,"side=6,angle=0",rotational_flow,"1:0deg,2:72deg,3:144deg,4:216deg,5:288deg","full_rotation,angle=360",true,5fold_rotational,high,"Perfect pentagonal symmetry"
+GS006,2025-10-17T10:25:00Z,ellipse_oscillation,"a=8,b=4,phase=0",harmonic_motion,"1:circle,2:ellipse,3:line,4:ellipse,5:circle","period_complete,phase=2π",true,periodic,high,"Harmonic oscillation between forms"
+GS007,2025-10-17T10:30:00Z,hexagon_tiling,"side=3,pattern=single",tessellation_growth,"1:hex,2:flower,3:ring1,4:ring2,5:ring3","19_hexagons,perfect_tiling",true,hexagonal,high,"Honeycomb pattern expansion"
+GS008,2025-10-17T10:35:00Z,mobius_strip,"width=2,twist=0",topology_transform,"1:rectangle,2:half_twist,3:mobius","single_surface,one_edge",true,non_orientable,medium,"Topological transformation"
+GS009,2025-10-17T10:40:00Z,parabola_focus,"vertex=(0,0),p=2",focus_flow,"1:parabola,2:focus_lines,3:reflection","perfect_reflection,focus=(0,2)",true,reflectional,high,"Light ray focusing simulation"
+GS010,2025-10-17T10:45:00Z,mandala_pattern,"center=(0,0),petals=8",radial_symmetry,"1:center,2:inner_ring,3:middle,4:outer","complete_mandala,8_petals",true,8fold_radial,high,"Sacred geometry pattern"
+GS011,2025-10-17T10:50:00Z,torus_flow,"major_r=5,minor_r=2",surface_flow,"1:circle,2:rotation,3:torus","surface_area=197.39",true,rotational,high,"3D surface of revolution"
+GS012,2025-10-17T10:55:00Z,golden_rectangle,"ratio=1,width=1",proportion_growth,"1:square,2:golden_rect,3:spiral","ratio=1.618,golden_spiral",true,proportional,high,"Golden ratio construction"
