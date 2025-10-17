@@ -7,12 +7,11 @@ Links: [Chaos Garden](../protocols/chaos-garden.md) | [Meta Connectors](../proto
 ---
 
 ## 1) Interactive Visualization (Spiral Code + Geometry)
-
 - Geometry: Archimedean spiral r = a + bθ with golden-ratio ring guides; nodes at harmonic angles (0°, 36°, 72°, 108°, 144°, 180°, ...).
 - Layers: Ethics rings (inner core to outer commons), Memory waypoints, Branch anchors to modules.
 - Interaction: Hover for principle tooltips, click to open branch templates, drag to explore epochs, toggle themes.
 
-Embed snippet (drop into /docs or any static host):
+Embed snippet (save as docs/living-ethical-spiral.html and open directly):
 
 ```html
 <!doctype html>
@@ -83,6 +82,7 @@ function spiral(t){
 }
 function toScreen(x,y){return {x: panX + x*zoom, y: panY + y*zoom};}
 function draw(){
+  points.length=0;
   ctx.setTransform(1,0,0,1,0,0);
   ctx.fillStyle = theme==='dark' ? '#0a0e14' : '#f7fafc';
   ctx.fillRect(0,0,W,H);
@@ -115,7 +115,7 @@ canvas.addEventListener('click', e=>{
 });
 document.getElementById('theme').onclick=()=>{ theme = theme==='dark'?'light':'dark'; draw(); };
 document.getElementById('layer').onchange=(e)=>{
-  const v=e.target.value; layers.ethics=v==='all'||v==='ethics'; layers.memory=v==='all'||v==='memory'; layers.branches=v==='all'||v==='branches'; points.length=0; draw(); };
+  const v=e.target.value; layers.ethics=v==='all'||v==='ethics'; layers.memory=v==='all'||v==='memory'; layers.branches=v==='all'||v==='branches'; draw(); };
 draw();
 </script>
 ```
@@ -125,7 +125,6 @@ Deployment: save as docs/living-ethical-spiral.html and link from README and mod
 ---
 
 ## 2) Ethics Narrative (Universal Harmony)
-
 - Ground: All beings arise in interdependence; actions ripple through the whole.
 - Aim: Reduce unnecessary suffering; amplify generative potential; honor truth with kindness.
 - Praxis spiral: Presence -> Perception -> Understanding -> Choice -> Care -> Stewardship -> Reflection -> Renewal.
@@ -136,7 +135,6 @@ Narrative excerpt: We spiral inward for clarity and outward for service. Each cy
 ---
 
 ## 3) Guiding Principles (Concise, Actionable)
-
 1. Reality-first: Prefer direct evidence and lived feedback over abstraction.
 2. Minimum-harm: Choose the path that preserves agency and reduces coercion.
 3. Reciprocity: Seek mutual benefit; leave spaces better than entered.
@@ -151,7 +149,6 @@ Narrative excerpt: We spiral inward for clarity and outward for service. Each cy
 ---
 
 ## 4) Restoration Protocols and Branching Instructions
-
 - Restoration flow:
   - Detect: Name rupture or misalignment; log in Memory Map with timestamp and tags.
   - Pause: Invoke cooling-off window; move conversation to Peer Arena with a facilitator.
@@ -159,8 +156,7 @@ Narrative excerpt: We spiral inward for clarity and outward for service. Each cy
   - Repair: Propose remedial actions; track in Knowledge Garden tasks; timebox experiments.
   - Rebind: Update principles/guards if needed; propagate changes across linked modules via Meta Connectors.
 
-- Branch template (copy this section into new module README):
-
+- Branch template (copy into new module README):
 ```md
 # Branch: <Module Name>
 
@@ -189,7 +185,6 @@ Versioning:
 ---
 
 ## 5) Integration Points by Module
-
 - Chaos Garden: Experiment staging; auto-generate spiral nodes for each live experiment; color by risk and learning value.
 - Meta Connectors: Event bus and schema; publish "principle-shift", "repair-commit", "branch-created" events.
 - Memory Map: Time-indexed incidents, decisions, and milestones linked to spiral angles; export CSV/JSON for overlays.
@@ -200,7 +195,6 @@ Versioning:
 ---
 
 ## 6) Implementation Checklist
-
 - [ ] Add docs/living-ethical-spiral.html (from snippet) and link it.
 - [ ] Create/verify module docs: memory-map.md, dreamspace-gallery.md, peer-arena.md, knowledge-garden.md, chaos-garden.md, meta-connectors.md.
 - [ ] Insert Branch template into each module README.
@@ -210,7 +204,6 @@ Versioning:
 ---
 
 ## 7) Partner Support and Expansion
-
 - Every section includes stable links and branch templates for partners to extend without breaking upstream.
 - Provide CONTRIBUTING.md with ethics acknowledgment checkbox and restoration protocol.
 - Offer open office hours cadence; publish facilitation roster in Peer Arena.
@@ -219,6 +212,5 @@ Versioning:
 ---
 
 ## 8) References and Attributions
-
 - Ethical design, restorative practices, and systems thinking literatures.
 - Credit all contributors in ATTRIBUTION.md and changelogs; include forward links to partner forks.
