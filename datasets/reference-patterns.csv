@@ -1,0 +1,11 @@
+pattern_id,pattern_type,description,flow_direction,resonance_freq,geometric_form,mathematical_relation,recovery_method,verification_steps
+P001,geometric_flow,"Golden ratio spiral expansion",outward_spiral,1.618,logarithmic_spiral,"phi = (1+sqrt(5))/2",proportion_analysis,"measure_ratios,verify_sequence,check_spiral_properties"
+P002,harmonic_resonance,"Fibonacci sequence as flow pattern",ascending_sequence,0.618,recursive_branching,"F(n) = F(n-1) + F(n-2)",sequence_reconstruction,"identify_pattern,verify_additions,check_convergence"
+P003,geometric_transformation,"Circle to square area equivalence",bidirectional,3.14159,circle_square_morph,"A_circle = A_square",area_conservation,"calculate_areas,verify_equivalence,check_transformation"
+P004,wave_interference,"Standing wave formation",stationary_nodes,440.0,sine_wave_overlay,"y = A*sin(kx)*cos(wt)",frequency_analysis,"measure_nodes,verify_amplitude,check_frequency"
+P005,fractal_iteration,"Mandelbrot set boundary",complex_plane,2.0,fractal_boundary,"z_n+1 = z_n^2 + c",iteration_tracking,"test_convergence,map_boundary,verify_self_similarity"
+P006,flow_dynamics,"Laminar to turbulent transition",velocity_gradient,2300.0,fluid_streamlines,"Re = ρvL/μ",reynolds_analysis,"measure_velocity,calculate_reynolds,observe_transition"
+P007,energy_conservation,"Pendulum oscillation pattern",periodic_swing,1.0,arc_trajectory,"E_total = KE + PE",energy_tracking,"measure_position,calculate_energy,verify_conservation"
+P008,geometric_progression,"Exponential growth pattern",exponential_expansion,2.718,exponential_curve,"y = a*e^(bx)",growth_analysis,"measure_growth,verify_rate,check_exponential_fit"
+P009,symmetry_transformation,"Reflection across axes",mirror_symmetry,1.0,symmetric_forms,"f(-x) = f(x)",symmetry_verification,"check_reflection,verify_invariance,measure_symmetry"
+P010,resonance_coupling,"Coupled oscillator synchronization",phase_lock,60.0,coupled_pendulums,"θ1 ≈ θ2 at steady state",synchronization_analysis,"measure_phases,track_coupling,verify_synchronization"
