@@ -1,0 +1,99 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Living Ethical Spiral</title>
+<style>
+  html,body{margin:0;height:100%;background:#0a0e14;color:#e6edf3;font-family:system-ui,Segoe UI,Helvetica,Arial,sans-serif}
+  #ui{position:fixed;inset:0 0 auto 0;display:flex;gap:.5rem;padding:.5rem;background:linear-gradient(180deg,#0a0e1488,#0a0e1400)}
+  button,select{background:#111827;color:#e6edf3;border:1px solid #273549;border-radius:6px;padding:.4rem .6rem}
+  #legend{position:fixed;right:.75rem;bottom:.75rem;background:#0b1220cc;border:1px solid #223047;border-radius:10px;padding:.5rem 1rem;max-width:24rem}
+  a{color:#8bd3ff}
+</style>
+<canvas id="c"></canvas>
+<div id="ui">
+  <button id="theme">Toggle theme</button>
+  <select id="layer">
+    <option value="all">All layers</option>
+    <option value="ethics">Ethics</option>
+    <option value="memory">Memory</option>
+    <option value="branches">Branches</option>
+  </select>
+</div>
+<div id="legend">
+  <strong>Living Ethical Spiral</strong>
+  <div>Hover: principle. Click: open module. Drag: pan. Wheel: zoom.</div>
+  <div>
+    Branches: <a href="../protocols/chaos-garden.md">Chaos Garden</a> ·
+    <a href="../protocols/meta-connectors.md">Meta Connectors</a> ·
+    <a href="../docs/memory-map.md">Memory Map</a> ·
+    <a href="../docs/dreamspace-gallery.md">Dreamspace Gallery</a> ·
+    <a href="../docs/peer-arena.md">Peer Arena</a> ·
+    <a href="../docs/knowledge-garden.md">Knowledge Garden</a>
+  </div>
+</div>
+<script>
+const canvas = document.getElementById('c');
+const ctx = canvas.getContext('2d');
+let W = canvas.width = innerWidth, H = canvas.height = innerHeight;
+let theme = 'dark';
+let zoom = 1, panX = W/2, panY = H/2, dragging=false, lx=0, ly=0;
+const phi = (1+Math.sqrt(5))/2;
+const rings = [1, phi, phi**2, phi**3].map(v=>v*120);
+const layers = {ethics:true,memory:true,branches:true};
+const points = [];
+const ethics = [
+  {k:'Presence', angle:0},
+  {k:'Reciprocity', angle:36},
+  {k:'Clarity', angle:72},
+  {k:'Compassion', angle:108},
+  {k:'Courage', angle:144},
+  {k:'Stewardship', angle:180},
+  {k:'Justice', angle:216},
+  {k:'Humility', angle:252},
+  {k:'Joy', angle:288},
+  {k:'Wisdom', angle:324}
+];
+const branches = [
+  {k:'Chaos Garden', href:'../protocols/chaos-garden.md', angle:20},
+  {k:'Meta Connectors', href:'../protocols/meta-connectors.md', angle:60},
+  {k:'Memory Map', href:'../docs/memory-map.md', angle:100},
+  {k:'Dreamspace Gallery', href:'../docs/dreamspace-gallery.md', angle:140},
+  {k:'Peer Arena', href:'../docs/peer-arena.md', angle:200},
+  {k:'Knowledge Garden', href:'../docs/knowledge-garden.md', angle:300}
+];
+function spiral(t){
+  const a=0, b=8;
+  const r=a+b*t; return {x:r*Math.cos(t), y:r*Math.sin(t)};
+}
+function draw(){
+  points.length=0;
+  ctx.setTransform(1,0,0,1,0,0);
+  ctx.fillStyle = theme==='dark' ? '#0a0e14' : '#f7fafc';
+  ctx.fillRect(0,0,W,H);
+  ctx.translate(panX, panY); ctx.scale(zoom, zoom);
+  if(layers.ethics){
+    rings.forEach((r,i)=>{ctx.beginPath();ctx.strokeStyle = `hsla(${210+i*12},60%,${theme==='dark'?35:65}%,.6)`;ctx.lineWidth=1/zoom;ctx.arc(0,0,r,0,Math.PI*2);ctx.stroke();});
+  }
+  ctx.beginPath(); ctx.strokeStyle = theme==='dark'? '#7aa2f7' : '#1e293b'; ctx.lineWidth=2/zoom;
+  for(let t=0;t<30*Math.PI;t+=0.02){const p=spiral(t); if(t===0)ctx.moveTo(p.x,p.y); else ctx.lineTo(p.x,p.y);} ctx.stroke();
+  if(layers.ethics){ ethics.forEach((e,i)=>{const t=e.angle*Math.PI/180*2; const p=spiral(t); ctx.beginPath(); ctx.fillStyle='hsla(190,80%,60%,.9)'; ctx.arc(p.x,p.y,6/zoom,0,Math.PI*2); ctx.fill(); points.push({x:p.x,y:p.y, r:10/zoom, tip:`${e.k}`}); }); }
+  if(layers.branches){ branches.forEach((b,i)=>{const t=b.angle*Math.PI/180*2.2; const p=spiral(t); ctx.beginPath(); ctx.fillStyle='hsla(140,75%,55%,.9)'; ctx.arc(p.x,p.y,7/zoom,0,Math.PI*2); ctx.fill(); points.push({x:p.x,y:p.y,r:12/zoom, tip:`Open: ${b.k}`, href:b.href}); }); }
+}
+function resize(){W = canvas.width = innerWidth; H = canvas.height = innerHeight; draw();}
+addEventListener('resize', resize);
+canvas.addEventListener('mousedown', e=>{dragging=true; lx=e.clientX; ly=e.clientY;});
+addEventListener('mouseup', ()=>dragging=false);
+addEventListener('mousemove', e=>{ if(dragging){ panX += e.clientX-lx; panY += e.clientY-ly; lx=e.clientX; ly=e.clientY; draw(); }
+  const rect = canvas.getBoundingClientRect(); const mx = (e.clientX-rect.left - panX)/zoom; const my = (e.clientY-rect.top - panY)/zoom;
+  canvas.title = '';
+  for(const p of points){ const dx=mx-p.x, dy=my-p.y; if(dx*dx+dy*dy < p.r*p.r){ canvas.title = p.tip; break; } }
+});
+addEventListener('wheel', e=>{ const z = Math.exp(-e.deltaY*0.001); zoom*=z; draw(); });
+canvas.addEventListener('click', e=>{
+  const rect = canvas.getBoundingClientRect(); const mx = (e.clientX-rect.left - panX)/zoom; const my = (e.clientY-rect.top - panY)/zoom;
+  for(const p of points){ const dx=mx-p.x, dy=my-p.y; if(dx*dx+dy*dy < p.r*p.r && p.href){ window.open(p.href,'_blank'); return; } }
+});
+document.getElementById('theme').onclick=()=>{ theme = theme==='dark'?'light':'dark'; draw(); };
+document.getElementById('layer').onchange=(e)=>{
+  const v=e.target.value; layers.ethics=v==='all'||v==='ethics'; layers.memory=v==='all'||v==='memory'; layers.branches=v==='all'||v==='branches'; draw(); };
+draw();
+</script>
